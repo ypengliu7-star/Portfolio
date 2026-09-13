@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { SiteNav } from "@/components/site-nav";
 import { getProject, projects } from "@/lib/projects";
+import { DingfengpoCase } from "@/components/dingfengpo-case";
 
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
@@ -13,6 +14,10 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   if (!project) notFound();
   const currentIndex = projects.findIndex((item) => item.slug === slug);
   const next = projects[(currentIndex + 1) % projects.length];
+
+  if (project.slug === "dingfengpo") {
+    return <DingfengpoCase project={project} next={next} />;
+  }
 
   return <main className={`case-study case-study--${project.slug}`}>
     <SiteNav />
