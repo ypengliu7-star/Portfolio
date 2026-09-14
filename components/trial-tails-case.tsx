@@ -6,6 +6,21 @@ import type { Project } from "@/lib/projects";
 const image = (number: string) =>
   `${withBasePath(`/media/cases/trial-tails/${number}.webp`)}?v=20260914-tails-native1`;
 
+const detailImage = (file: string) =>
+  `${withBasePath(`/media/cases/trial-tails/${file}`)}?v=20260914-tails-upload1`;
+
+const detailBoards = [
+  ["1.png", "项目定位与核心体验"],
+  ["1(1).png", "用户研究与问题定义"],
+  ["2.png", "服务旅程与关键触点"],
+  ["2(2).png", "产品流程与功能系统"],
+  ["3(2).png", "AI 匹配与交互界面"],
+  ["4(2).png", "VR 试养体验与反馈"],
+  ["7a881759-e1bf-457a-a4c6-54c31e5b04cd.png", "移动端与 VR 协同"],
+  ["dd0e83ea-16b9-4b1b-89b1-22151b97b91c.png", "高保真界面与原型"],
+  ["ee35f8c4-28a3-4460-ac61-c90e9a315e25.png", "完整方案与成果总结"],
+] as const;
+
 const insights = [
   ["01", "信息足够，责任感仍然缺席", "传统领养页面可以罗列年龄、品种和健康状态，却很难让用户理解日常照护会怎样改变自己的时间、情绪和预算。"],
   ["02", "匹配不是一次推荐", "真正的适配来自生活节奏、居住条件、照护经验与宠物个性的共同判断，而不是只看外形偏好。"],
@@ -96,7 +111,7 @@ export function TrialTailsCase({ project, next }: { project: Project; next: Proj
         {researchSignals.map(([title,body],index)=><article key={title}><em>0{index+1}</em><div><h3>{title}</h3><p>{body}</p></div><i>{index < researchSignals.length-1 ? "↓" : "→"}</i></article>)}
         <div className="tails-research-map__outcome"><span>SERVICE OPPORTUNITY</span><strong>让“是否适合”比“是否喜欢”更早出现。</strong></div>
       </div>
-      <figure className="tails-source-visual tails-source-visual--wide"><a href={image("02")} target="_blank" rel="noreferrer"><img src={image("02")} alt="TRIAL TAILS 用户研究、旅程与服务机会完整设计图" loading="lazy" /></a><figcaption>ORIGINAL RESEARCH VISUAL / 点击查看完整内容</figcaption></figure>
+      <figure className="tails-source-visual tails-source-visual--wide"><a href={detailImage("1(1).png")} target="_blank" rel="noreferrer"><img src={detailImage("1(1).png")} alt="TRIAL TAILS 用户研究与问题定义高清设计图" loading="lazy" /></a><figcaption>HIGH-RES RESEARCH VISUAL / 点击查看原图</figcaption></figure>
     </section>
 
     <section className="tails-system">
@@ -118,7 +133,7 @@ export function TrialTailsCase({ project, next }: { project: Project; next: Proj
           <p className="tails-vr__note">体验结束后，系统不会替用户做决定，而是生成一份可讨论的准备度回顾。</p>
         </div>
       </div>
-      <figure className="tails-source-visual"><a href={image("03")} target="_blank" rel="noreferrer"><img src={image("03")} alt="TRIAL TAILS AI匹配与VR试养系统完整设计图" loading="lazy" /></a><figcaption>ORIGINAL SYSTEM VISUAL / 点击查看完整内容</figcaption></figure>
+      <figure className="tails-source-visual"><a href={detailImage("2(2).png")} target="_blank" rel="noreferrer"><img src={detailImage("2(2).png")} alt="TRIAL TAILS AI匹配与VR试养系统高清设计图" loading="lazy" /></a><figcaption>HIGH-RES SYSTEM VISUAL / 点击查看原图</figcaption></figure>
     </section>
 
     <section className="tails-journey">
@@ -153,12 +168,27 @@ export function TrialTailsCase({ project, next }: { project: Project; next: Proj
           <div className="tails-phone__help"><span>NEED HELP?</span><b>Talk to an adoption advisor →</b></div>
         </article>
       </div>
-      <figure className="tails-source-visual"><a href={image("04")} target="_blank" rel="noreferrer"><img src={image("04")} alt="TRIAL TAILS 移动端界面与VR触点完整设计图" loading="lazy" /></a><figcaption>ORIGINAL INTERFACE VISUAL / 点击查看完整内容</figcaption></figure>
+      <figure className="tails-source-visual"><a href={detailImage("7a881759-e1bf-457a-a4c6-54c31e5b04cd.png")} target="_blank" rel="noreferrer"><img src={detailImage("7a881759-e1bf-457a-a4c6-54c31e5b04cd.png")} alt="TRIAL TAILS 移动端界面与VR触点高清设计图" loading="lazy" /></a><figcaption>HIGH-RES INTERFACE VISUAL / 点击查看原图</figcaption></figure>
       <div className="tails-principles">{principles.map(([title,body],index)=><article key={title}><b>0{index+1}</b><h3>{title}</h3><p>{body}</p></article>)}</div>
     </section>
 
+    <section className="tails-detail-library">
+      <header><p className="tails-label">06 / HIGH-RES DESIGN DETAILS</p><h2>九张原始设计图，<br />拆开看清每一处细节。</h2><p>每张画板按左右区域放大展示，完整覆盖原图内容；点击任一细节可打开高清原图。</p></header>
+      <div className="tails-detail-list">
+        {detailBoards.map(([file,label],index)=><article key={file}>
+          <div className="tails-detail-title"><span>{String(index+1).padStart(2,"0")}</span><h3>{label}</h3><a href={detailImage(file)} target="_blank" rel="noreferrer">查看完整高清图 ↗</a></div>
+          <div className="tails-detail-slices">
+            {(["left","right"] as const).map((side)=><a href={detailImage(file)} target="_blank" rel="noreferrer" key={side} aria-label={`${label} ${side === "left" ? "左侧" : "右侧"}细节`}>
+              <i style={{"--detail-src":`url("${detailImage(file)}")`,"--detail-pos":side} as React.CSSProperties} />
+              <span>{side === "left" ? "LEFT DETAIL" : "RIGHT DETAIL"} / 点击放大</span>
+            </a>)}
+          </div>
+        </article>)}
+      </div>
+    </section>
+
     <section className="tails-result">
-      <div><p className="tails-label">06 / OUTCOME</p><h2>科技不是替用户做决定，<br />而是帮助他们看见决定的后果。</h2></div>
+      <div><p className="tails-label">07 / OUTCOME</p><h2>科技不是替用户做决定，<br />而是帮助他们看见决定的后果。</h2></div>
       <div><p>最终方案将平台浏览、AI建议、VR体验、线下见面和领养后支持组织成一条连续服务。它的价值不在于增加一个新奇功能，而在于把原本缺失的理解和准备放回领养过程。</p><a href={project.video} target="_blank" rel="noreferrer">WATCH PROJECT VIDEO <span>↗</span></a></div>
     </section>
 
@@ -198,15 +228,16 @@ export function TrialTailsCase({ project, next }: { project: Project; next: Proj
       .tails-interface{background:#f4f0e7}.tails-interface__head{display:grid;grid-template-columns:180px 1fr .55fr;gap:4vw;align-items:end;margin-bottom:75px}.tails-screens{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,3vw,50px);align-items:start;padding:70px clamp(10px,6vw,90px);background:#30201b}.tails-phone{min-height:610px;padding:18px;border:8px solid #eee6dc;border-radius:30px;background:#ed6b38;color:#291a16;box-shadow:0 24px 50px rgba(0,0,0,.28)}.tails-phone__top{display:flex;justify-content:space-between;font-size:8px}.tails-phone header{display:flex;justify-content:space-between;align-items:center;margin-top:24px;padding-bottom:15px;border-bottom:1px solid rgba(41,26,22,.3)}.tails-phone header b{font-size:13px}.tails-phone header span{font-size:7px;letter-spacing:.12em}.tails-phone>h3{margin:35px 0 18px;font-size:30px;line-height:1}.tails-phone__pet{display:flex;align-items:end;height:300px;margin:25px -4px 18px;padding:18px;background:radial-gradient(circle at 50% 45%,#f5bc9a 0 24%,transparent 25%),radial-gradient(circle at 50% 57%,#482d26 0 27%,transparent 28%),#e8a2aa;border-radius:45% 45% 10px 10px}.tails-phone__pet span{font-size:8px;letter-spacing:.14em}.tails-phone button{display:flex;justify-content:space-between;width:100%;padding:16px;border:0;background:#30201b;color:#fff;font-size:8px;letter-spacing:.12em}.tails-phone--match{background:#f5eee3}.tails-phone__ring{display:grid;place-content:center;width:160px;height:160px;margin:34px auto 20px;border:12px solid #ed6b38;border-right-color:#e6a1aa;border-radius:50%;text-align:center}.tails-phone__ring strong{font-size:52px;line-height:.8}.tails-phone__ring span{font-size:10px}.tails-phone--match>h3{text-align:center;margin:22px 0 8px}.tails-phone--match>p{text-align:center;font-size:11px;line-height:1.65}.tails-phone--match ul{list-style:none;padding:0;margin:28px 0}.tails-phone--match li{display:flex;justify-content:space-between;padding:11px 0;border-top:1px solid rgba(41,26,22,.18);font-size:10px}.tails-phone--care{background:#e8a2aa}.tails-phone__date{margin:36px 0 0;font-size:7px;letter-spacing:.14em}.tails-phone--care>h3{margin-top:10px}.tails-phone__task{display:grid;grid-template-columns:45px 1fr 18px;gap:10px;padding:18px 0;border-top:1px solid rgba(41,26,22,.25);align-items:center}.tails-phone__task>span,.tails-phone__task p{font-size:9px}.tails-phone__task p{margin:4px 0 0}.tails-phone__help{margin-top:65px;padding:18px;background:#30201b;color:#fff}.tails-phone__help span{display:block;margin-bottom:10px;font-size:7px;letter-spacing:.15em}.tails-phone__help b{font-size:11px}.tails-principles{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:75px;background:rgba(37,27,24,.2)}.tails-principles article{padding:30px;background:#f4f0e7}.tails-principles b{color:#db6036}.tails-principles h3{margin:45px 0 15px;font-size:22px}.tails-principles p{font-size:14px;line-height:1.8;color:#6c5c56}
       .tails-source-visual{margin:55px 0 0}.tails-source-visual a{display:block;background:#eadfd3;overflow:hidden}.tails-source-visual img{display:block;width:100%;height:auto}.tails-source-visual figcaption{margin-top:12px;font-size:9px;letter-spacing:.13em;color:#806b63}.tails-research .tails-source-visual{grid-column:1/-1}.tails-result{display:grid;grid-template-columns:1.2fr .65fr;gap:9vw;background:#30201b;color:#f5eee3}.tails-result>div:last-child{align-self:end}.tails-result>div:last-child>p{color:#c9bbb4}.tails-result a{display:flex;justify-content:space-between;margin-top:45px;padding:24px 0;border-top:1px solid rgba(255,255,255,.35);border-bottom:1px solid rgba(255,255,255,.35);font-size:11px;letter-spacing:.16em}
       .tails-archive{display:grid;grid-template-columns:.45fr 1.55fr;gap:7vw;background:#dca0a8}.tails-archive>div:first-child>p:last-child{font-size:14px;line-height:1.8}.tails-archive>div:last-child{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.tails-archive a{position:relative;overflow:hidden;background:#c88992}.tails-archive a span{position:absolute;z-index:1;left:10px;top:10px;padding:5px;background:#2e1d19;color:#fff;font-size:8px;letter-spacing:.12em}.tails-archive img{display:block;width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .6s}.tails-archive a:hover img{transform:scale(1.03)}
+      .tails-detail-library{padding:130px 7vw;background:#241713;color:#f4f0e7}.tails-detail-library>header{display:grid;grid-template-columns:180px 1fr .55fr;gap:4vw;align-items:end;margin-bottom:80px}.tails-detail-library>header>p:last-child{margin:0;font-size:14px;line-height:1.8;color:#b9aaa2}.tails-detail-library h2{margin:0;font-size:clamp(42px,5.5vw,82px);line-height:1.04;letter-spacing:-.055em;font-weight:500}.tails-detail-list{display:grid;gap:80px}.tails-detail-list>article{padding-top:24px;border-top:1px solid rgba(255,255,255,.18)}.tails-detail-title{display:grid;grid-template-columns:60px 1fr auto;gap:20px;align-items:center;margin-bottom:24px}.tails-detail-title>span{font-size:28px;color:var(--orange)}.tails-detail-title h3{margin:0;font-size:22px;font-weight:500}.tails-detail-title a{font-size:10px;letter-spacing:.12em;color:#ef9a78}.tails-detail-slices{display:grid;grid-template-columns:1fr 1fr;gap:10px}.tails-detail-slices>a{display:block;color:#d7c8bf}.tails-detail-slices i{display:block;width:100%;aspect-ratio:8/9;background-image:var(--detail-src);background-size:200% 100%;background-repeat:no-repeat;background-position:var(--detail-pos) center;border:1px solid rgba(255,255,255,.16);transition:transform .45s,filter .45s}.tails-detail-slices i[style*="right"]{background-position:right center}.tails-detail-slices>a:hover i{transform:scale(.992);filter:brightness(1.06)}.tails-detail-slices span{display:block;margin-top:10px;font-size:8px;letter-spacing:.13em;color:#8f7e76}
       @media(max-width:800px){
         .tails-eyebrow{top:88px;left:20px}.tails-hero__title{left:20px;bottom:14vh}.tails-hero__title h1{font-size:22vw}.tails-hero__scroll{right:20px}
-        .tails-overview,.tails-problem,.tails-system,.tails-journey,.tails-interface,.tails-result,.tails-archive{padding:85px 20px}
+        .tails-overview,.tails-problem,.tails-system,.tails-journey,.tails-interface,.tails-result,.tails-archive,.tails-detail-library{padding:85px 20px}
         .tails-overview__lead,.tails-problem header,.tails-system>header,.tails-journey header,.tails-interface__head,.tails-result,.tails-archive,.tails-research{grid-template-columns:1fr}
         .tails-overview__lead{gap:30px;margin:38px 0 55px}.tails-meta{grid-template-columns:1fr 1fr}.tails-meta dl:nth-child(2){border-right:0}.tails-meta dl:nth-child(n+3){border-top:1px solid rgba(37,27,24,.2)}
         .tails-problem__line{flex-wrap:wrap;justify-content:flex-start}.tails-insights,.tails-system__pair,.tails-principles{grid-template-columns:1fr}.tails-insights article{min-height:auto}.tails-insights h3{margin-top:38px}
         .tails-research{padding:85px 20px;gap:50px}.tails-research-map{padding:22px}.tails-system>header,.tails-interface__head{gap:28px}.tails-system__pair{margin:55px 0}.tails-system__pair article{padding:28px}.tails-prototype{grid-template-columns:1fr}.tails-match,.tails-vr{padding:24px}.tails-screens{grid-template-columns:1fr;padding:45px 10vw}.tails-phone{min-height:590px}
         .tails-journey__grid{grid-template-columns:1fr}.tails-journey__grid article{min-height:auto}.tails-journey__grid h3{margin-top:45px}
-        .tails-archive details>div{grid-template-columns:repeat(2,1fr)}.tails-archive a{aspect-ratio:4/3}.tails-overview h2,.tails-problem h2,.tails-system h2,.tails-journey h2,.tails-interface h2,.tails-result h2,.tails-archive h2{font-size:40px}
+        .tails-detail-library>header{grid-template-columns:1fr;gap:25px}.tails-detail-slices{grid-template-columns:1fr}.tails-detail-title{grid-template-columns:45px 1fr}.tails-detail-title a{grid-column:2}.tails-detail-slices i{aspect-ratio:8/9}.tails-archive details>div{grid-template-columns:repeat(2,1fr)}.tails-archive a{aspect-ratio:4/3}.tails-overview h2,.tails-problem h2,.tails-system h2,.tails-journey h2,.tails-interface h2,.tails-result h2,.tails-archive h2{font-size:40px}
       }
     `}</style>
   </main>;
