@@ -3,7 +3,7 @@ import { SiteNav } from "@/components/site-nav";
 import { withBasePath } from "@/lib/base-path";
 import type { Project } from "@/lib/projects";
 
-const media = (name: string) => withBasePath(`/media/cases/dingfengpo/extracted/${name}.webp`);
+const media = (name: string) => `${withBasePath(`/media/cases/dingfengpo/extracted/${name}.webp`)}?v=20260914-hd2`;
 
 const chapters = [
   ["01", "白天彩排", "鼓声与火作为意外出现，用滑稽表演掩藏真实意图。"],
