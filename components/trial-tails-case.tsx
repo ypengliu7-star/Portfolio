@@ -118,6 +118,7 @@ export function TrialTailsCase({ project, next }: { project: Project; next: Proj
           <p className="tails-vr__note">体验结束后，系统不会替用户做决定，而是生成一份可讨论的准备度回顾。</p>
         </div>
       </div>
+      <figure className="tails-source-visual"><a href={image("03")} target="_blank" rel="noreferrer"><img src={image("03")} alt="TRIAL TAILS AI匹配与VR试养系统完整设计图" loading="lazy" /></a><figcaption>ORIGINAL SYSTEM VISUAL / 点击查看完整内容</figcaption></figure>
     </section>
 
     <section className="tails-journey">
