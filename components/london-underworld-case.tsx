@@ -20,8 +20,7 @@ const projectBoards = [
 ] as const;
 
 const fieldPhotos = [
-  "微信图片_20260815101252_23_2.jpg","微信图片_20260815101252_24_2.jpg","微信图片_20260815101252_25_2.jpg",
-  "微信图片_20260815101252_26_2.jpg","微信图片_20260815101252_27_2.jpg","微信图片_20260815101351_36_2.jpg",
+  "微信图片_20260815101351_36_2.jpg",
   "微信图片_20260815101351_37_2.jpg","微信图片_20260815101351_38_2.jpg","微信图片_20260815101351_39_2.jpg",
   "微信图片_20260815101351_40_2.jpg","微信图片_20260815101351_41_2.jpg","微信图片_20260815101351_42_2.jpg",
   "微信图片_20260815101351_43_2.jpg","微信图片_20260815161708_46_2.png","微信图片_20260815161708_47_2.png",
@@ -131,7 +130,7 @@ export function LondonUnderworldCase({ project, next }: { project: Project; next
     </section>
 
     <section className="uw-gallery">
-      <header><p className="uw-label">06 / LIVE PHOTO ARCHIVE</p><h2>真实空间、演员、道具与演出现场</h2><span>19张原始素材全部直接展示；点击任意照片查看原尺寸。</span></header>
+      <header><p className="uw-label">06 / LIVE PHOTO ARCHIVE</p><h2>真实空间、演员、道具与演出现场</h2><span>已移除5张棚拍角色照，保留14张真实场地、道具与演出素材；点击任意照片查看原尺寸。</span></header>
       <div className="uw-photo-wall">{fieldPhotos.map((file,index)=><a href={uploadedImage(file)} target="_blank" rel="noreferrer" key={file} className={index % 7 === 0 ? "is-wide" : ""}><img src={uploadedImage(file)} alt={`伦敦地下局真实现场照片 ${String(index+1).padStart(2,"0")}`} loading="lazy" /><span>LIVE / {String(index+1).padStart(2,"0")}</span></a>)}</div>
     </section>
 
