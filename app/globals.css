@@ -625,6 +625,81 @@ img { max-width:100%; }
 .dfp-watch:hover { background:#d0aa6d; }
 .dfp-watch i { display:grid; place-items:center; width:56px; height:56px; border:1px solid rgba(0,0,0,.5); border-radius:50%; font-style:normal; }
 
+/* All Roads — Roman sprint case study */
+.roads { --roads-stone:#d9d0bd; --roads-ink:#161612; --roads-bronze:#a98251; }
+.roads-cover .case-cover__image { background-position:center 46%; opacity:.95; }
+.roads-cover .case-cover__shade { background:linear-gradient(180deg,rgba(8,7,5,.2),rgba(8,7,5,.04) 45%,rgba(8,7,5,.75)); }
+.roads-overview { background:#0b0b0a; }
+.roads-lead { max-width:780px; margin:-42px 0 92px 28%; font-size:18px; line-height:1.9; color:#ada99f; }
+.roads-sprint { display:grid; grid-template-columns:repeat(3,1fr); margin:0 7vw; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.roads-sprint>div { min-height:240px; padding:38px; display:flex; flex-direction:column; justify-content:space-between; }
+.roads-sprint>div+div { border-left:1px solid var(--line); }
+.roads-sprint strong { font-size:clamp(58px,7vw,112px); line-height:.8; letter-spacing:-.06em; font-weight:410; color:var(--roads-stone); }
+.roads-sprint span { max-width:240px; font-size:14px; line-height:1.6; color:#8e8c85; }
+.roads-section { padding:145px 7vw; border-bottom:1px solid var(--line); }
+.roads-section>header { display:grid; grid-template-columns:180px minmax(360px,1.2fr) minmax(260px,.65fr); gap:4vw; align-items:start; margin-bottom:78px; }
+.roads-section>header>p,.roads-canvas header>p,.roads-result>div:first-child>p { margin:10px 0 0; font-size:10px; letter-spacing:.18em; color:var(--roads-bronze); }
+.roads-section>header h2,.roads-canvas header h2,.roads-result h2 { margin:0; font-size:clamp(42px,5vw,76px); line-height:1.06; letter-spacing:-.05em; font-weight:420; }
+.roads-section>header>span,.roads-canvas header>span { padding-top:9px; font-size:15px; line-height:1.8; color:#9b9991; }
+.roads-idea { background:var(--roads-stone); color:var(--roads-ink); }
+.roads-idea>header>p { color:#745d42; }
+.roads-idea__grid { display:grid; grid-template-columns:1.35fr .65fr; gap:7vw; align-items:end; padding-top:68px; border-top:1px solid rgba(22,22,18,.23); }
+.roads-idea blockquote { margin:0; }
+.roads-idea blockquote span { display:block; margin-bottom:24px; font-size:11px; letter-spacing:.2em; color:#72593c; }
+.roads-idea blockquote strong { font-family:Georgia,"Times New Roman",serif; font-size:clamp(52px,7vw,112px); line-height:.85; letter-spacing:-.055em; font-weight:400; }
+.roads-idea__grid>div p { margin:0 0 24px; font-size:17px; line-height:1.88; color:#4e4a40; }
+.roads-chapters { display:grid; gap:110px; }
+.roads-chapters article { display:grid; grid-template-columns:1.35fr .65fr; gap:5vw; align-items:end; }
+.roads-chapters article:nth-child(even) { grid-template-columns:.65fr 1.35fr; }
+.roads-chapters article:nth-child(even) figure { order:2; }
+.roads-chapters figure { margin:0; overflow:hidden; background:#151513; }
+.roads-chapters figure a { display:block; }
+.roads-chapters img { display:block; width:100%; aspect-ratio:16/9; object-fit:cover; transition:transform .8s ease; }
+.roads-chapters figure:hover img { transform:scale(1.02); }
+.roads-chapters article>div { padding-bottom:4px; }
+.roads-chapters b,.roads-decisions b { color:var(--roads-bronze); font-size:34px; font-weight:400; }
+.roads-chapters h3 { margin:28px 0 20px; font-size:clamp(28px,3vw,46px); line-height:1.08; font-weight:430; }
+.roads-chapters p { margin:0; font-size:16px; line-height:1.9; color:#a8a69f; }
+.roads-language { background:#11110f; }
+.roads-language__hero { margin:0; }
+.roads-language__hero a { display:block; overflow:hidden; }
+.roads-language__hero img { display:block; width:100%; aspect-ratio:16/8.3; object-fit:cover; }
+.roads-language__hero>p { margin:16px 0 0; font-size:11px; line-height:1.7; letter-spacing:.08em; color:#77766f; }
+.roads-decisions { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; margin-top:90px; background:var(--line); }
+.roads-decisions article { min-height:275px; padding:30px; background:#11110f; }
+.roads-decisions h3 { margin:48px 0 16px; font-size:22px; font-weight:440; }
+.roads-decisions p { margin:0; font-size:15px; line-height:1.8; color:#9d9b94; }
+.roads-production__grid { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+.roads-production__grid article { background:#121210; }
+.roads-production__grid img { display:block; width:100%; aspect-ratio:16/10; object-fit:cover; }
+.roads-production__grid h3 { margin:28px 28px 14px; font-size:23px; font-weight:440; }
+.roads-production__grid p { margin:0; padding:0 28px 34px; font-size:15px; line-height:1.8; color:#9d9b94; }
+.roads-canvas { padding:145px 3.5vw; background:#d2c8b5; color:#171611; }
+.roads-canvas header { display:grid; grid-template-columns:180px minmax(430px,1fr) minmax(260px,.65fr); gap:4vw; align-items:start; margin:0 3.5vw 78px; }
+.roads-canvas header>p { color:#70583d; }
+.roads-canvas header>span { color:#595449; }
+.roads-canvas__items { display:grid; gap:65px; }
+.roads-canvas__items figure { margin:0; }
+.roads-canvas__items a { display:block; overflow:hidden; border:1px solid rgba(22,22,18,.2); background:#eee9dd; box-shadow:0 25px 65px rgba(31,26,16,.13); }
+.roads-canvas__items img { display:block; width:100%; height:auto; }
+.roads-canvas__items figcaption { display:flex; justify-content:space-between; gap:30px; padding:16px 2px 0; font-size:11px; letter-spacing:.08em; color:#5c574b; }
+.roads-canvas__items figcaption b { color:#70583d; font-weight:500; }
+.roads-canvas__link { min-height:170px; margin-top:65px; display:flex; align-items:center; justify-content:center; gap:24px; border:1px solid rgba(22,22,18,.35); font-size:12px; letter-spacing:.18em; transition:background .3s,color .3s; }
+.roads-canvas__link:hover { background:#171611; color:#d9d0bd; }
+.roads-canvas__link i { display:grid; place-items:center; width:54px; height:54px; border:1px solid currentColor; border-radius:50%; font-style:normal; }
+.roads-archive__grid { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+.roads-archive__grid a { color:inherit; }
+.roads-archive__grid figure { position:relative; margin:0; overflow:hidden; background:#141412; }
+.roads-archive__grid img { display:block; width:100%; aspect-ratio:16/9; object-fit:cover; transition:transform .75s ease; }
+.roads-archive__grid figure:hover img { transform:scale(1.025); }
+.roads-archive__grid figcaption { position:absolute; left:12px; bottom:11px; padding:6px 8px; background:rgba(0,0,0,.68); font-size:9px; letter-spacing:.08em; }
+.roads-result { display:grid; grid-template-columns:1.05fr .7fr; gap:8vw; padding:145px 7vw; background:var(--roads-stone); color:var(--roads-ink); }
+.roads-result h2 { margin-top:42px; }
+.roads-result>div:nth-child(2) p { margin:0 0 28px; font-size:17px; line-height:1.9; color:#504c42; }
+.roads-result>a { grid-column:1/-1; min-height:160px; margin-top:40px; display:flex; align-items:center; justify-content:center; gap:18px; border:1px solid rgba(22,22,18,.35); font-size:12px; letter-spacing:.18em; transition:background .3s,color .3s; }
+.roads-result>a:hover { background:var(--roads-ink); color:var(--roads-stone); }
+.roads-result>a span { font-size:20px; }
+
 /* CV */
 .cv-page { min-height:100vh; background:#e8e9e5; color:#111313; color-scheme:light; }
 .cv-page .site-nav { position:absolute; color:#111; border-color:rgba(0,0,0,.14); mix-blend-mode:normal; }
@@ -713,6 +788,29 @@ img { max-width:100%; }
   .dfp-sound dl { padding:24px 0; border-top:1px solid var(--line); }
   .dfp-final { padding:90px 18px; }
   .dfp-final__title { margin:0 0 45px; gap:20px; }
+  .roads-lead { margin:-34px 0 66px; font-size:16px; }
+  .roads-sprint { margin:0 18px; grid-template-columns:1fr; }
+  .roads-sprint>div { min-height:170px; padding:28px 0; }
+  .roads-sprint>div+div { border-left:0; border-top:1px solid var(--line); }
+  .roads-section { padding:90px 18px; }
+  .roads-section>header,.roads-canvas header,.roads-result { grid-template-columns:1fr; }
+  .roads-section>header { gap:20px; margin-bottom:48px; }
+  .roads-section>header h2,.roads-canvas header h2,.roads-result h2 { font-size:40px; }
+  .roads-idea__grid,.roads-chapters article,.roads-chapters article:nth-child(even) { grid-template-columns:1fr; }
+  .roads-idea__grid { gap:42px; padding-top:45px; }
+  .roads-chapters { gap:70px; }
+  .roads-chapters article:nth-child(even) figure { order:0; }
+  .roads-decisions,.roads-production__grid { grid-template-columns:1fr; }
+  .roads-decisions article { min-height:220px; }
+  .roads-production__grid { gap:28px; }
+  .roads-canvas { padding:90px 18px; }
+  .roads-canvas header { margin:0 0 48px; gap:20px; }
+  .roads-canvas__items { gap:45px; }
+  .roads-canvas__items figcaption { flex-direction:column; gap:7px; }
+  .roads-canvas__link { min-height:130px; padding:0 18px; text-align:center; }
+  .roads-archive__grid { grid-template-columns:1fr 1fr; }
+  .roads-result { gap:38px; padding:90px 18px; }
+  .roads-result>a { grid-column:auto; min-height:130px; margin-top:15px; }
   .cv-hero { min-height:auto; padding:110px 18px 70px; grid-template-columns:1fr; gap:52px; }
   .cv-hero__copy h1 { font-size:18vw; }
   .cv-portrait { aspect-ratio:1.1; }

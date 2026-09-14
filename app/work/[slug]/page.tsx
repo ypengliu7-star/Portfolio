@@ -3,6 +3,7 @@ import Link from "next/link";
 import { SiteNav } from "@/components/site-nav";
 import { getProject, projects } from "@/lib/projects";
 import { DingfengpoCase } from "@/components/dingfengpo-case";
+import { AllRoadsCase } from "@/components/all-roads-case";
 
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
@@ -17,6 +18,10 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
   if (project.slug === "dingfengpo") {
     return <DingfengpoCase project={project} next={next} />;
+  }
+
+  if (project.slug === "all-roads") {
+    return <AllRoadsCase project={project} next={next} />;
   }
 
   return <main className={`case-study case-study--${project.slug}`}>
