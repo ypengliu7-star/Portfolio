@@ -26,6 +26,26 @@ const principles = [
   ["体验，而非测试", "VR不是给用户打分，而是让抽象责任变成具体、可感知的情境。"],
 ];
 
+const researchSignals = [
+  ["准备度", "时间、预算、空间与照护经验"],
+  ["匹配度", "生活节奏、性格与特殊需求"],
+  ["真实感", "把抽象责任转化为日常行动"],
+  ["连续性", "从决定前延伸至领养后支持"],
+];
+
+const matchFactors = [
+  ["DAILY ROUTINE", 86, "生活节奏"],
+  ["HOME & SPACE", 74, "居住环境"],
+  ["CARE EXPERIENCE", 68, "照护经验"],
+  ["PERSONALITY FIT", 92, "性格适配"],
+];
+
+const careMoments = [
+  ["07:30", "Morning care", "喂食、换水与清洁"],
+  ["18:20", "After work", "陪伴、运动与情绪观察"],
+  ["23:10", "Unexpected event", "处理噪音、焦虑或健康异常"],
+];
+
 export function TrialTailsCase({ project, next }: { project: Project; next: Project }) {
   return <main className="case-study tails-native">
     <SiteNav />
@@ -71,7 +91,11 @@ export function TrialTailsCase({ project, next }: { project: Project; next: Proj
         <p>研究不止停留在“用户担心什么”。通过用户旅程、痛点聚类和服务蓝图，我们把领养前的犹豫、匹配中的信息不对称，以及领养后的支持缺失放到同一张系统地图里。</p>
         <ul><li>领养前：不知道自己是否真的准备好</li><li>匹配中：看见结果，却不理解推荐逻辑</li><li>决定时：缺少接近日常的照护体验</li><li>领养后：遇到问题时难以及时获得支持</li></ul>
       </div>
-      <figure><img src={image("02")} alt="TRIAL TAILS 用户研究、旅程与服务机会" loading="lazy" /><figcaption>RESEARCH MAP / USER JOURNEY & SERVICE OPPORTUNITIES</figcaption></figure>
+      <div className="tails-research-map" aria-label="用户研究洞察与服务机会">
+        <div className="tails-research-map__header"><span>RESEARCH SYNTHESIS</span><b>04 CORE SIGNALS</b></div>
+        {researchSignals.map(([title,body],index)=><article key={title}><em>0{index+1}</em><div><h3>{title}</h3><p>{body}</p></div><i>{index < researchSignals.length-1 ? "↓" : "→"}</i></article>)}
+        <div className="tails-research-map__outcome"><span>SERVICE OPPORTUNITY</span><strong>让“是否适合”比“是否喜欢”更早出现。</strong></div>
+      </div>
     </section>
 
     <section className="tails-system">
@@ -80,7 +104,19 @@ export function TrialTailsCase({ project, next }: { project: Project; next: Proj
         <article><span>AI / MATCHING LAYER</span><h3>从“我喜欢什么”走向“我们是否适合”</h3><p>综合生活节奏、居住环境、照护经验、预算和偏好，生成匹配建议并解释推荐依据。用户可以调整条件，而不是被一个分数决定。</p><ul><li>生活方式与照护能力评估</li><li>宠物性格与特殊需求匹配</li><li>可解释的建议与风险提醒</li></ul></article>
         <article><span>VR / EXPERIENCE LAYER</span><h3>把未来的日常提前放进身体</h3><p>以喂养、清洁、陪伴、噪音和突发状况组织模拟场景。用户不是观看说明，而是在行动中感受照护所需要的注意力和时间。</p><ul><li>日常照护与空间适应</li><li>情绪和行为变化的回应</li><li>突发情况中的选择与反馈</li></ul></article>
       </div>
-      <figure className="tails-system__visual"><img src={image("03")} alt="TRIAL TAILS AI匹配与VR试养系统" loading="lazy" /><figcaption>SYSTEM PROTOTYPE / AI MATCHING + VR TRIAL EXPERIENCE</figcaption></figure>
+      <div className="tails-prototype">
+        <div className="tails-match">
+          <div className="tails-prototype__bar"><span>TRIAL TAILS / MATCH</span><i>AI EXPLANATION</i></div>
+          <div className="tails-match__score"><strong>84</strong><span>% MATCH</span><p>适合继续了解，但需要确认工作日独处时间。</p></div>
+          <div className="tails-match__factors">{matchFactors.map(([label,value,title])=><article key={label}><div><span>{label}</span><b>{value}%</b></div><i><em style={{width: `${value}%`}} /></i><p>{title}</p></article>)}</div>
+        </div>
+        <div className="tails-vr">
+          <div className="tails-prototype__bar"><span>VR TRIAL / DAY 01</span><i>12:42</i></div>
+          <h3>把照护放进一天的时间线</h3>
+          <div>{careMoments.map(([time,title,body],index)=><article key={time}><b>{time}</b><span className={index===2 ? "is-alert" : ""}>{index===2 ? "!" : "✓"}</span><div><h4>{title}</h4><p>{body}</p></div></article>)}</div>
+          <p className="tails-vr__note">体验结束后，系统不会替用户做决定，而是生成一份可讨论的准备度回顾。</p>
+        </div>
+      </div>
     </section>
 
     <section className="tails-journey">
@@ -90,7 +126,31 @@ export function TrialTailsCase({ project, next }: { project: Project; next: Proj
 
     <section className="tails-interface">
       <div className="tails-interface__head"><p className="tails-label">05 / INTERFACE & TOUCHPOINTS</p><h2>轻松的品牌语言，承载严肃的责任教育。</h2><p>移动端负责资料、匹配解释和预约，VR负责情境体验。视觉上保持明亮、亲近与可信，避免让准备评估变成一场冰冷的资格考试。</p></div>
-      <figure><img src={image("04")} alt="TRIAL TAILS 移动端界面与VR触点" loading="lazy" /><figcaption>KEY INTERFACES / MOBILE SERVICE & VR TOUCHPOINTS</figcaption></figure>
+      <div className="tails-screens" aria-label="TRIAL TAILS 移动端关键界面">
+        <article className="tails-phone">
+          <div className="tails-phone__top"><span>9:41</span><i>● ●</i></div>
+          <header><b>trial tails</b><span>01 / PREPARE</span></header>
+          <h3>Are you ready<br/>for a new friend?</h3>
+          <div className="tails-phone__pet"><span>YOUR LIFE,<br/>THEIR LIFE.</span></div>
+          <button>START MY PROFILE <i>→</i></button>
+        </article>
+        <article className="tails-phone tails-phone--match">
+          <div className="tails-phone__top"><span>9:41</span><i>● ●</i></div>
+          <header><b>trial tails</b><span>02 / MATCH</span></header>
+          <div className="tails-phone__ring"><strong>84</strong><span>%</span></div>
+          <h3>Meet Momo</h3><p>安静、亲人，需要稳定陪伴。与你的空间和生活节奏较匹配。</p>
+          <ul><li><span>Personality</span><b>92%</b></li><li><span>Daily routine</span><b>86%</b></li><li><span>Care needs</span><b>74%</b></li></ul>
+          <button>WHY THIS MATCH? <i>→</i></button>
+        </article>
+        <article className="tails-phone tails-phone--care">
+          <div className="tails-phone__top"><span>9:41</span><i>● ●</i></div>
+          <header><b>trial tails</b><span>03 / SUPPORT</span></header>
+          <p className="tails-phone__date">TODAY / TUESDAY</p><h3>Good morning,<br/>you two.</h3>
+          <div className="tails-phone__task"><span>07:30</span><div><b>Morning care</b><p>Food · Water · Clean</p></div><i>✓</i></div>
+          <div className="tails-phone__task"><span>18:20</span><div><b>Play & observe</b><p>20–30 min activity</p></div><i>○</i></div>
+          <div className="tails-phone__help"><span>NEED HELP?</span><b>Talk to an adoption advisor →</b></div>
+        </article>
+      </div>
       <div className="tails-principles">{principles.map(([title,body],index)=><article key={title}><b>0{index+1}</b><h3>{title}</h3><p>{body}</p></article>)}</div>
     </section>
 
@@ -100,8 +160,8 @@ export function TrialTailsCase({ project, next }: { project: Project; next: Proj
     </section>
 
     <section className="tails-archive">
-      <div><p className="tails-label">PROJECT ARCHIVE</p><h2>完整设计画布</h2><p>原作品集页面保留为项目档案，不再承担网页正文。点击可查看完整内容。</p></div>
-      <div>{["01","02","03","04","05"].map((n)=><a href={image(n)} target="_blank" rel="noreferrer" key={n}><span>PAGE {n}</span><img src={image(n)} alt={`TRIAL TAILS 项目画布 ${n}`} loading="lazy" /></a>)}</div>
+      <div><p className="tails-label">PROJECT ARCHIVE</p><h2>原始设计画布</h2><p>仅作为档案保留。正文已经重构为清晰的网页信息，不再依赖长图阅读。</p></div>
+      <details><summary>展开查看 5 张原始画布 <span>＋</span></summary><div>{["01","02","03","04","05"].map((n)=><a href={image(n)} target="_blank" rel="noreferrer" key={n}><span>PAGE {n}</span><img src={image(n)} alt={`TRIAL TAILS 项目画布 ${n}`} loading="lazy" /></a>)}</div></details>
     </section>
 
     <section className="case-outro"><p>END OF CASE STUDY / 03</p><Link href="/work">BACK TO INDEX</Link></section>
@@ -132,7 +192,7 @@ export function TrialTailsCase({ project, next }: { project: Project; next: Proj
       .tails-system{background:#f2ede2}.tails-system>header{display:grid;grid-template-columns:180px 1fr .55fr;gap:4vw;align-items:start}.tails-system>header>span{font-size:15px;line-height:1.8;color:#746760}.tails-system__pair{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin:80px 0;background:rgba(37,27,24,.2)}.tails-system__pair article{padding:45px;background:#f2ede2}.tails-system__pair article>span{font-size:10px;letter-spacing:.16em;color:#dc5f32}.tails-system__pair h3{margin:60px 0 24px;font-size:30px;line-height:1.15}.tails-system__pair p{font-size:15px;line-height:1.85;color:#655751}
       .tails-system__visual{max-width:1180px;margin-left:auto!important}
       .tails-journey{background:#ed6b38;color:#241713}.tails-journey header{display:grid;grid-template-columns:180px 1fr;gap:4vw}.tails-journey .tails-label{color:#542c1e}.tails-journey__grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;margin-top:75px;background:rgba(37,23,19,.25)}.tails-journey__grid article{min-height:350px;padding:26px;background:#ed6b38}.tails-journey__grid b{font-size:28px;font-weight:400}.tails-journey__grid span{display:block;margin-top:10px;font-size:9px;letter-spacing:.15em}.tails-journey__grid h3{margin:90px 0 16px;font-size:21px}.tails-journey__grid p{font-size:14px;line-height:1.8}
-      .tails-interface{background:#f4f0e7}.tails-interface__head{display:grid;grid-template-columns:180px 1fr .55fr;gap:4vw;align-items:end;margin-bottom:75px}.tails-principles{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:75px;background:rgba(37,27,24,.2)}.tails-principles article{padding:30px;background:#f4f0e7}.tails-principles b{color:#db6036}.tails-principles h3{margin:45px 0 15px;font-size:22px}.tails-principles p{font-size:14px;line-height:1.8;color:#6c5c56}
+      .tails-interface{background:#f4f0e7}.tails-interface__head{display:grid;grid-template-columns:180px 1fr .55fr;gap:4vw;align-items:end;margin-bottom:75px}.tails-screens{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,3vw,50px);align-items:start;padding:70px clamp(10px,6vw,90px);background:#30201b}.tails-phone{min-height:610px;padding:18px;border:8px solid #eee6dc;border-radius:30px;background:#ed6b38;color:#291a16;box-shadow:0 24px 50px rgba(0,0,0,.28)}.tails-phone__top{display:flex;justify-content:space-between;font-size:8px}.tails-phone header{display:flex;justify-content:space-between;align-items:center;margin-top:24px;padding-bottom:15px;border-bottom:1px solid rgba(41,26,22,.3)}.tails-phone header b{font-size:13px}.tails-phone header span{font-size:7px;letter-spacing:.12em}.tails-phone>h3{margin:35px 0 18px;font-size:30px;line-height:1}.tails-phone__pet{display:flex;align-items:end;height:300px;margin:25px -4px 18px;padding:18px;background:radial-gradient(circle at 50% 45%,#f5bc9a 0 24%,transparent 25%),radial-gradient(circle at 50% 57%,#482d26 0 27%,transparent 28%),#e8a2aa;border-radius:45% 45% 10px 10px}.tails-phone__pet span{font-size:8px;letter-spacing:.14em}.tails-phone button{display:flex;justify-content:space-between;width:100%;padding:16px;border:0;background:#30201b;color:#fff;font-size:8px;letter-spacing:.12em}.tails-phone--match{background:#f5eee3}.tails-phone__ring{display:grid;place-content:center;width:160px;height:160px;margin:34px auto 20px;border:12px solid #ed6b38;border-right-color:#e6a1aa;border-radius:50%;text-align:center}.tails-phone__ring strong{font-size:52px;line-height:.8}.tails-phone__ring span{font-size:10px}.tails-phone--match>h3{text-align:center;margin:22px 0 8px}.tails-phone--match>p{text-align:center;font-size:11px;line-height:1.65}.tails-phone--match ul{list-style:none;padding:0;margin:28px 0}.tails-phone--match li{display:flex;justify-content:space-between;padding:11px 0;border-top:1px solid rgba(41,26,22,.18);font-size:10px}.tails-phone--care{background:#e8a2aa}.tails-phone__date{margin:36px 0 0;font-size:7px;letter-spacing:.14em}.tails-phone--care>h3{margin-top:10px}.tails-phone__task{display:grid;grid-template-columns:45px 1fr 18px;gap:10px;padding:18px 0;border-top:1px solid rgba(41,26,22,.25);align-items:center}.tails-phone__task>span,.tails-phone__task p{font-size:9px}.tails-phone__task p{margin:4px 0 0}.tails-phone__help{margin-top:65px;padding:18px;background:#30201b;color:#fff}.tails-phone__help span{display:block;margin-bottom:10px;font-size:7px;letter-spacing:.15em}.tails-phone__help b{font-size:11px}.tails-principles{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:75px;background:rgba(37,27,24,.2)}.tails-principles article{padding:30px;background:#f4f0e7}.tails-principles b{color:#db6036}.tails-principles h3{margin:45px 0 15px;font-size:22px}.tails-principles p{font-size:14px;line-height:1.8;color:#6c5c56}
       .tails-result{display:grid;grid-template-columns:1.2fr .65fr;gap:9vw;background:#30201b;color:#f5eee3}.tails-result>div:last-child{align-self:end}.tails-result>div:last-child>p{color:#c9bbb4}.tails-result a{display:flex;justify-content:space-between;margin-top:45px;padding:24px 0;border-top:1px solid rgba(255,255,255,.35);border-bottom:1px solid rgba(255,255,255,.35);font-size:11px;letter-spacing:.16em}
       .tails-archive{display:grid;grid-template-columns:.45fr 1.55fr;gap:7vw;background:#dca0a8}.tails-archive>div:first-child>p:last-child{font-size:14px;line-height:1.8}.tails-archive>div:last-child{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.tails-archive a{position:relative;overflow:hidden;background:#c88992}.tails-archive a span{position:absolute;z-index:1;left:10px;top:10px;padding:5px;background:#2e1d19;color:#fff;font-size:8px;letter-spacing:.12em}.tails-archive img{display:block;width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .6s}.tails-archive a:hover img{transform:scale(1.03)}
       @media(max-width:800px){
@@ -141,9 +201,9 @@ export function TrialTailsCase({ project, next }: { project: Project; next: Proj
         .tails-overview__lead,.tails-problem header,.tails-system>header,.tails-journey header,.tails-interface__head,.tails-result,.tails-archive,.tails-research{grid-template-columns:1fr}
         .tails-overview__lead{gap:30px;margin:38px 0 55px}.tails-meta{grid-template-columns:1fr 1fr}.tails-meta dl:nth-child(2){border-right:0}.tails-meta dl:nth-child(n+3){border-top:1px solid rgba(37,27,24,.2)}
         .tails-problem__line{flex-wrap:wrap;justify-content:flex-start}.tails-insights,.tails-system__pair,.tails-principles{grid-template-columns:1fr}.tails-insights article{min-height:auto}.tails-insights h3{margin-top:38px}
-        .tails-research{padding:85px 20px;gap:50px}.tails-system>header,.tails-interface__head{gap:28px}.tails-system__pair{margin:55px 0}.tails-system__pair article{padding:28px}
+        .tails-research{padding:85px 20px;gap:50px}.tails-research-map{padding:22px}.tails-system>header,.tails-interface__head{gap:28px}.tails-system__pair{margin:55px 0}.tails-system__pair article{padding:28px}.tails-prototype{grid-template-columns:1fr}.tails-match,.tails-vr{padding:24px}.tails-screens{grid-template-columns:1fr;padding:45px 10vw}.tails-phone{min-height:590px}
         .tails-journey__grid{grid-template-columns:1fr}.tails-journey__grid article{min-height:auto}.tails-journey__grid h3{margin-top:45px}
-        .tails-archive>div:last-child{grid-template-columns:repeat(2,1fr)}.tails-archive a{aspect-ratio:4/3}.tails-overview h2,.tails-problem h2,.tails-system h2,.tails-journey h2,.tails-interface h2,.tails-result h2,.tails-archive h2{font-size:40px}
+        .tails-archive details>div{grid-template-columns:repeat(2,1fr)}.tails-archive a{aspect-ratio:4/3}.tails-overview h2,.tails-problem h2,.tails-system h2,.tails-journey h2,.tails-interface h2,.tails-result h2,.tails-archive h2{font-size:40px}
       }
     `}</style>
   </main>;
