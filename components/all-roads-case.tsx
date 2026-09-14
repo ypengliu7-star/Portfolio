@@ -4,7 +4,7 @@ import { withBasePath } from "@/lib/base-path";
 import type { Project } from "@/lib/projects";
 
 const asset = (name: string, extension = "webp") =>
-  `${withBasePath(`/media/cases/all-roads/native/${name}.${extension}`)}?v=20260914-rome1`;
+  `${withBasePath(`/media/cases/all-roads/native/${name}.${extension}`)}?v=20260914-rome2`;
 
 const archive = [
   ["still-01", "主角第一次读懂任务"],
@@ -23,7 +23,7 @@ const chapters = [
     number: "01",
     title: "条条大路通罗马",
     body: "一个只想离开的现代人，被石板不断派发任务。无论选择哪条路，他都会回到同一个罗马起点。重复不是填充，而是笑点和叙事规则。",
-    image: "film-return",
+    image: "still-01",
   },
   {
     number: "02",
