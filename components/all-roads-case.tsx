@@ -52,6 +52,7 @@ export function AllRoadsCase({ project, next }: { project: Project; next: Projec
 
     <section className="case-cover roads-cover" style={{ "--case-image": `url(${asset("still-03")})` } as React.CSSProperties}>
       <div className="case-cover__image" /><div className="case-cover__shade" />
+      <a className="case-cover__play" href={project.video} target="_blank" rel="noreferrer" aria-label="播放 ALL ROADS 完整影片"><i>▶</i><span>PLAY FILM</span></a>
       <p className="case-cover__index">02 / 24H AI FILM SPRINT</p>
       <div className="case-cover__title"><p>ROMAN ABSURDIST SHORT FILM</p><h1>ALL ROADS</h1></div>
       <a className="case-cover__scroll" href="#overview"><span /> EXPLORE THE PROJECT</a>
@@ -123,7 +124,7 @@ export function AllRoadsCase({ project, next }: { project: Project; next: Projec
     <section className="roads-result">
       <div><p>07 / RESULT & REFLECTION</p><h2>在24小时里，限制本身成为了作品的结构。</h2></div>
       <div><p>最有效的方法，是把重复场景直接写入叙事，并让石板承担所有任务信息。这样既减少生成变量，也让观众快速理解笑点。</p><p>下一轮会优先完善复杂接触动作和群众镜头，并在生成前建立更严格的服装、光线与空间连续性表。</p></div>
-      <a href={project.video} target="_blank" rel="noreferrer">WATCH FINAL FILM <span>↗</span></a>
+      <a className="film-poster film-poster--roads" href={project.video} target="_blank" rel="noreferrer" style={{"--watch-image": `url(${asset("film-war-run")})`} as React.CSSProperties} aria-label="播放 ALL ROADS 完整影片"><div className="film-poster__image" /><div className="film-poster__shade" /><span className="film-poster__play">▶</span><p>WATCH FINAL FILM</p><strong>播放 ALL ROADS 完整影片 ↗</strong></a>
     </section>
 
     <section className="case-outro"><p>END OF CASE STUDY / 02</p><Link href="/work">BACK TO INDEX</Link></section>
