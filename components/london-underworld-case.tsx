@@ -6,6 +6,29 @@ import type { Project } from "@/lib/projects";
 const archiveImage = (number: string) =>
   `${withBasePath(`/media/cases/london-underworld/${number}.webp`)}?v=20260915-underworld-native1`;
 
+const uploadedImage = (file: string) =>
+  `${withBasePath(`/media/cases/london-underworld/${file}`)}?v=20260914-underworld-upload1`;
+
+const projectBoards = [
+  ["伦敦地下局_01_项目概览.png", "项目概览"],
+  ["伦敦地下局_02_互动叙事系统.png", "互动叙事系统"],
+  ["伦敦地下局_03_现场导演与证据.png", "现场导演与证据"],
+  ["LONDON_UNDERWORLD_project_evidence_v2.png", "项目证据汇总"],
+  ["ChatGPT Image 2026年8月16日 10_54_41 (1).png", "早期项目设计 01"],
+  ["ChatGPT Image 2026年8月16日 10_54_42 (2).png", "早期项目设计 02"],
+  ["ChatGPT Image 2026年8月16日 10_54_42 (3).png", "早期项目设计 03"],
+] as const;
+
+const fieldPhotos = [
+  "微信图片_20260815101252_23_2.jpg","微信图片_20260815101252_24_2.jpg","微信图片_20260815101252_25_2.jpg",
+  "微信图片_20260815101252_26_2.jpg","微信图片_20260815101252_27_2.jpg","微信图片_20260815101351_36_2.jpg",
+  "微信图片_20260815101351_37_2.jpg","微信图片_20260815101351_38_2.jpg","微信图片_20260815101351_39_2.jpg",
+  "微信图片_20260815101351_40_2.jpg","微信图片_20260815101351_41_2.jpg","微信图片_20260815101351_42_2.jpg",
+  "微信图片_20260815101351_43_2.jpg","微信图片_20260815161708_46_2.png","微信图片_20260815161708_47_2.png",
+  "微信图片_20260815161708_48_2.png","微信图片_20260815161708_49_2.png","微信图片_20260815161708_50_2.png",
+  "微信图片_20260815161708_51_2.png",
+] as const;
+
 const scale = [
   ["100+", "对外演出场次"],
   ["5", "每场玩家人数"],
@@ -62,7 +85,8 @@ export function LondonUnderworldCase({ project, next }: { project: Project; next
         <p>五位玩家会探索不同区域、与不同NPC建立关系，并在长时间体验中不断改变行动计划。固定脚本无法覆盖所有现场变化，因此设计的核心从“玩家会看到什么”转向“当玩家做出任何合理选择时，世界如何回应”。</p>
         <ul><li>快速建立角色身份与阵营关系</li><li>让信息通过行动而不是说明进入体验</li><li>维持十小时内的节奏、体力与情绪变化</li><li>让新玩家和老玩家都能获得有效路径</li></ul>
       </div>
-      <figure><img src={archiveImage("01")} alt="伦敦地下局项目概览与现场空间" loading="lazy" /><figcaption>PROJECT CONTEXT / SPACE, CHARACTERS & LIVE EXPERIENCE</figcaption></figure>
+      <figure><a href={uploadedImage("伦敦地下局_01_项目概览.png")} target="_blank" rel="noreferrer"><img src={uploadedImage("伦敦地下局_01_项目概览.png")} alt="伦敦地下局项目概览高清设计图" loading="lazy" /></a><figcaption>PROJECT CONTEXT / 点击查看高清项目概览</figcaption></figure>
+      <div className="uw-inline-gallery">{fieldPhotos.slice(0,4).map((file,index)=><a href={uploadedImage(file)} target="_blank" rel="noreferrer" key={file}><img src={uploadedImage(file)} alt={`伦敦地下局场地与演出现场 ${index+1}`} loading="lazy" /></a>)}</div>
     </section>
 
     <section className="uw-redesign">
@@ -78,13 +102,15 @@ export function LondonUnderworldCase({ project, next }: { project: Project; next
         <div><b>03</b><h3>冲突</h3><p>把设定信息转化为角色之间可回应的矛盾。</p></div>
         <div><b>04</b><h3>选择</h3><p>宴会结束时，玩家已经形成自己的判断与阵营。</p></div>
       </div>
-      <figure><img src={archiveImage("02")} alt="伦敦地下局叙事流程重构与家宴互动" loading="lazy" /><figcaption>REDESIGN EVIDENCE / FROM READING TO PLAYABLE DINNER SCENE</figcaption></figure>
+      <figure><a href={uploadedImage("伦敦地下局_02_互动叙事系统.png")} target="_blank" rel="noreferrer"><img src={uploadedImage("伦敦地下局_02_互动叙事系统.png")} alt="伦敦地下局互动叙事系统高清设计图" loading="lazy" /></a><figcaption>REDESIGN EVIDENCE / 点击查看高清互动叙事系统</figcaption></figure>
+      <div className="uw-inline-gallery uw-inline-gallery--three">{fieldPhotos.slice(4,7).map((file,index)=><a href={uploadedImage(file)} target="_blank" rel="noreferrer" key={file}><img src={uploadedImage(file)} alt={`家宴、角色与互动现场 ${index+1}`} loading="lazy" /></a>)}</div>
     </section>
 
     <section className="uw-npc">
       <header><p className="uw-label">03 / NPC SYSTEM</p><h2>开放体验需要的不是更多台词，<br />而是演员能够自主判断。</h2><span>培训规则被压缩成三条可以在现场立即执行的原则。</span></header>
       <div className="uw-npc__grid">{npcRules.map(([n,title,body])=><article key={n}><b>{n}</b><h3>{title}</h3><p>{body}</p></article>)}</div>
-      <figure><img src={archiveImage("03")} alt="伦敦地下局NPC机制与演员培训系统" loading="lazy" /><figcaption>NPC TRAINING / CHARACTER LOGIC, PROPS & PLAYER RESPONSE</figcaption></figure>
+      <figure><a href={uploadedImage("伦敦地下局_03_现场导演与证据.png")} target="_blank" rel="noreferrer"><img src={uploadedImage("伦敦地下局_03_现场导演与证据.png")} alt="伦敦地下局现场导演与证据高清设计图" loading="lazy" /></a><figcaption>NPC TRAINING / 点击查看高清现场导演与证据</figcaption></figure>
+      <div className="uw-inline-gallery">{fieldPhotos.slice(7,11).map((file,index)=><a href={uploadedImage(file)} target="_blank" rel="noreferrer" key={file}><img src={uploadedImage(file)} alt={`NPC、道具与玩家互动 ${index+1}`} loading="lazy" /></a>)}</div>
     </section>
 
     <section className="uw-iteration">
@@ -101,16 +127,25 @@ export function LondonUnderworldCase({ project, next }: { project: Project; next
         <p>故事必须在真实商业条件中运行：演员轮换、玩家差异、道具损耗、灯光变化、餐饮节点和长时间体力都会影响体验。最终交付不只是剧本，而是一整套组织和运营方法。</p>
         <ul><li>146页组织者手册与角色资料</li><li>NPC培训、复盘和现场应变规则</li><li>场景装饰、灯光实验与商业物料</li><li>老玩家新流程及1.0—3.0版本记录</li></ul>
       </div>
-      <figure><img src={archiveImage("04")} alt="伦敦地下局版本迭代与商业交付" loading="lazy" /><figcaption>DELIVERY ARCHIVE / ITERATION, TRAINING & LIVE OPERATION</figcaption></figure>
+      <figure><a href={uploadedImage("LONDON_UNDERWORLD_project_evidence_v2.png")} target="_blank" rel="noreferrer"><img src={uploadedImage("LONDON_UNDERWORLD_project_evidence_v2.png")} alt="伦敦地下局项目证据汇总高清图" loading="lazy" /></a><figcaption>DELIVERY ARCHIVE / 点击查看高清项目证据汇总</figcaption></figure>
     </section>
 
     <section className="uw-gallery">
-      <header><p className="uw-label">06 / PROJECT ARCHIVE</p><h2>现场、流程与交付档案</h2><span>当前项目页全部保留；新增原始现场照片将按上方章节继续补入。</span></header>
-      <div>{["01","02","03","04"].map((n)=><a href={archiveImage(n)} target="_blank" rel="noreferrer" key={n}><img src={archiveImage(n)} alt={`伦敦地下局完整项目页面 ${n}`} loading="lazy" /><span>ARCHIVE / {n}</span></a>)}</div>
+      <header><p className="uw-label">06 / LIVE PHOTO ARCHIVE</p><h2>真实空间、演员、道具与演出现场</h2><span>19张原始素材全部直接展示；点击任意照片查看原尺寸。</span></header>
+      <div className="uw-photo-wall">{fieldPhotos.map((file,index)=><a href={uploadedImage(file)} target="_blank" rel="noreferrer" key={file} className={index % 7 === 0 ? "is-wide" : ""}><img src={uploadedImage(file)} alt={`伦敦地下局真实现场照片 ${String(index+1).padStart(2,"0")}`} loading="lazy" /><span>LIVE / {String(index+1).padStart(2,"0")}</span></a>)}</div>
+    </section>
+
+    <section className="uw-evidence-library">
+      <header><p className="uw-label">07 / DESIGN EVIDENCE</p><h2>项目信息、叙事系统与现场交付</h2><span>7张项目设计与证据图均使用新上传高清文件。</span></header>
+      <div>{projectBoards.map(([file,label],index)=><article key={file}>
+        <div><b>{String(index+1).padStart(2,"0")}</b><h3>{label}</h3><a href={uploadedImage(file)} target="_blank" rel="noreferrer">打开高清原图 ↗</a></div>
+        <a href={uploadedImage(file)} target="_blank" rel="noreferrer"><img src={uploadedImage(file)} alt={`伦敦地下局${label}高清图`} loading="lazy" /></a>
+      </article>)}</div>
+      <details><summary>查看原有4张作品集归档 <span>＋</span></summary><div className="uw-old-archive">{["01","02","03","04"].map((n)=><a href={archiveImage(n)} target="_blank" rel="noreferrer" key={n}><img src={archiveImage(n)} alt={`伦敦地下局旧版作品集页面 ${n}`} loading="lazy" /></a>)}</div></details>
     </section>
 
     <section className="uw-reflection">
-      <p className="uw-label">07 / REFLECTION</p>
+      <p className="uw-label">08 / REFLECTION</p>
       <h2>沉浸式体验真正的“剧本”，<br />是规则、角色与现场共同形成的回应系统。</h2>
       <p>这次实践让我从编写内容转向设计可运行的叙事系统。一个稳定的沉浸式项目既要允许玩家改变故事，也要让团队在变化中保持角色、节奏与商业交付质量。</p>
     </section>
@@ -135,7 +170,10 @@ export function LondonUnderworldCase({ project, next }: { project: Project; next
       .uw-operations{display:grid;grid-template-columns:1fr .7fr;gap:8vw;background:#3a1719}.uw-operations__copy{align-self:end}.uw-operations__copy>p{color:#c1b4aa}.uw-operations figure{grid-column:1/-1;margin-top:25px}
       .uw-gallery{background:#171011}.uw-gallery header{display:grid;grid-template-columns:180px 1fr .55fr;gap:4vw;align-items:end;margin-bottom:70px}.uw-gallery header>span{font-size:13px;line-height:1.8;color:#96877d}.uw-gallery>div{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.uw-gallery a{position:relative;display:block;overflow:hidden;background:#251617}.uw-gallery img{display:block;width:100%;height:auto;transition:transform .7s}.uw-gallery a:hover img{transform:scale(1.015)}.uw-gallery a span{position:absolute;left:12px;bottom:12px;padding:7px 9px;background:rgba(20,8,9,.82);font-size:8px;letter-spacing:.13em}
       .uw-reflection{display:grid;grid-template-columns:180px 1fr .55fr;gap:4vw;align-items:end;background:#cfc8bc;color:#1c1715}.uw-reflection>p:last-child{color:#625750}
-      @media(max-width:800px){.uw-kicker{top:85px;left:20px}.uw-hero__title{left:20px;bottom:14vh}.uw-hero__title h1{font-size:21vw}.uw-hero__scroll{right:20px}.uw-overview,.uw-context,.uw-redesign,.uw-npc,.uw-iteration,.uw-operations,.uw-gallery,.uw-reflection{padding:82px 20px}.uw-overview__lead,.uw-context,.uw-redesign>header,.uw-npc>header,.uw-iteration header,.uw-operations,.uw-gallery header,.uw-reflection{grid-template-columns:1fr}.uw-overview__lead{gap:28px;margin:38px 0 55px}.uw-meta{grid-template-columns:1fr}.uw-meta dl+dl{padding-left:0;border-left:0;border-top:1px solid rgba(23,19,18,.2)}.uw-scale{grid-template-columns:repeat(2,1fr)}.uw-scale div{min-height:140px}.uw-context{gap:55px}.uw-before-after{grid-template-columns:1fr}.uw-arrow{transform:rotate(90deg)}.uw-redesign__steps,.uw-npc__grid{grid-template-columns:1fr}.uw-npc__grid article{min-height:auto}.uw-npc__grid h3{margin-top:40px}.uw-timeline article{grid-template-columns:1fr;gap:30px}.uw-gallery>div{grid-template-columns:1fr}.uw-overview h2,.uw-context h2,.uw-redesign h2,.uw-npc h2,.uw-iteration h2,.uw-operations h2,.uw-gallery h2,.uw-reflection h2{font-size:39px}}
+      .uw-inline-gallery{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:28px}.uw-inline-gallery--three{grid-template-columns:repeat(3,1fr)}.uw-inline-gallery a{display:block;aspect-ratio:4/3;overflow:hidden;background:#160b0c}.uw-inline-gallery img{width:100%;height:100%;object-fit:cover;transition:transform .55s}.uw-inline-gallery a:hover img{transform:scale(1.025)}
+      .uw-gallery{background:#171011}.uw-gallery header,.uw-evidence-library header{display:grid;grid-template-columns:180px 1fr .55fr;gap:4vw;align-items:end;margin-bottom:70px}.uw-gallery header>span,.uw-evidence-library header>span{font-size:13px;line-height:1.8;color:#96877d}.uw-photo-wall{display:grid!important;grid-template-columns:repeat(4,1fr)!important;grid-auto-flow:dense;gap:8px!important}.uw-photo-wall a{position:relative;display:block;aspect-ratio:4/3;overflow:hidden;background:#251617}.uw-photo-wall a.is-wide{grid-column:span 2;aspect-ratio:2/1}.uw-photo-wall img{width:100%!important;height:100%!important;object-fit:cover}.uw-photo-wall a span{position:absolute;left:10px;bottom:10px;padding:6px 8px;background:rgba(20,8,9,.82);font-size:8px;letter-spacing:.13em}
+      .uw-evidence-library{padding:130px 7vw;background:#2a1214}.uw-evidence-library h2{margin:0;font-family:Georgia,"Songti SC",serif;font-size:clamp(43px,5.6vw,84px);line-height:1.04;letter-spacing:-.05em;font-weight:400}.uw-evidence-library>div{display:grid;gap:70px}.uw-evidence-library article{border-top:1px solid rgba(215,208,195,.2);padding-top:24px}.uw-evidence-library article>div{display:grid;grid-template-columns:60px 1fr auto;gap:20px;align-items:center;margin-bottom:22px}.uw-evidence-library article b{font-family:Georgia,serif;font-size:31px;color:#b78b4e}.uw-evidence-library article h3{margin:0;font-size:22px;font-weight:500}.uw-evidence-library article>div a{font-size:9px;letter-spacing:.13em;color:#d2a96c}.uw-evidence-library article>a{display:block;overflow:hidden;background:#160b0c}.uw-evidence-library article img{display:block;width:100%;height:auto}.uw-evidence-library details{margin-top:80px;border-top:1px solid rgba(215,208,195,.2)}.uw-evidence-library summary{display:flex;justify-content:space-between;padding:24px 0;cursor:pointer;font-size:11px;letter-spacing:.12em}.uw-old-archive{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.uw-old-archive img{display:block;width:100%;height:auto}
+      @media(max-width:800px){.uw-kicker{top:85px;left:20px}.uw-hero__title{left:20px;bottom:14vh}.uw-hero__title h1{font-size:21vw}.uw-hero__scroll{right:20px}.uw-overview,.uw-context,.uw-redesign,.uw-npc,.uw-iteration,.uw-operations,.uw-gallery,.uw-evidence-library,.uw-reflection{padding:82px 20px}.uw-overview__lead,.uw-context,.uw-redesign>header,.uw-npc>header,.uw-iteration header,.uw-operations,.uw-gallery header,.uw-reflection{grid-template-columns:1fr}.uw-overview__lead{gap:28px;margin:38px 0 55px}.uw-meta{grid-template-columns:1fr}.uw-meta dl+dl{padding-left:0;border-left:0;border-top:1px solid rgba(23,19,18,.2)}.uw-scale{grid-template-columns:repeat(2,1fr)}.uw-scale div{min-height:140px}.uw-context{gap:55px}.uw-before-after{grid-template-columns:1fr}.uw-arrow{transform:rotate(90deg)}.uw-redesign__steps,.uw-npc__grid{grid-template-columns:1fr}.uw-npc__grid article{min-height:auto}.uw-npc__grid h3{margin-top:40px}.uw-timeline article{grid-template-columns:1fr;gap:30px}.uw-inline-gallery,.uw-inline-gallery--three{grid-template-columns:repeat(2,1fr)}.uw-photo-wall{grid-template-columns:repeat(2,1fr)!important}.uw-photo-wall a.is-wide{grid-column:span 2}.uw-gallery header,.uw-evidence-library header{grid-template-columns:1fr}.uw-evidence-library article>div{grid-template-columns:45px 1fr}.uw-evidence-library article>div a{grid-column:2}.uw-old-archive{grid-template-columns:1fr}.uw-gallery>div{grid-template-columns:1fr}.uw-overview h2,.uw-context h2,.uw-redesign h2,.uw-npc h2,.uw-iteration h2,.uw-operations h2,.uw-gallery h2,.uw-reflection h2{font-size:39px}}
     `}</style>
   </main>;
 }
