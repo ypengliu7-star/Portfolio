@@ -44,6 +44,7 @@ export function DingfengpoCase({ project, next }: { project: Project; next: Proj
     <SiteNav />
     <section className="case-cover" style={{ "--case-image": `url(${project.cover})` } as React.CSSProperties}>
       <div className="case-cover__image" /><div className="case-cover__shade" />
+      <a className="case-cover__play" href={project.video} target="_blank" rel="noreferrer" aria-label="播放《定风波》完整影片"><i>▶</i><span>PLAY FILM</span></a>
       <p className="case-cover__index">01 / AIGC HISTORICAL SHORT FILM</p>
       <div className="case-cover__title"><p>谁人敢去定风波</p><h1>定风波</h1></div>
       <a className="case-cover__scroll" href="#overview"><span /> EXPLORE THE PROJECT</a>
@@ -104,7 +105,7 @@ export function DingfengpoCase({ project, next }: { project: Project; next: Proj
     <section className="dfp-final">
       <div className="dfp-final__title"><p>05 / FINAL OUTPUT</p><h2>最终影片与成果展示</h2><span>完整短片、横竖版海报、角色设定与场景资产、中英文字幕</span></div>
       <div className="dfp-final__grid">{finalFrames.map(([image, title]) => <a key={image} href={media(image)} target="_blank" rel="noreferrer" aria-label={`查看${title}高清剧照`}><figure><img src={media(image)} alt={title} loading="lazy" decoding="async" /><figcaption>{title}</figcaption></figure></a>)}</div>
-      <a className="dfp-watch" href={project.video} target="_blank" rel="noreferrer"><span>WATCH FINAL FILM</span><i>↗</i></a>
+      <a className="film-poster film-poster--dfp" href={project.video} target="_blank" rel="noreferrer" style={{"--watch-image": `url(${media("final-flag")})`} as React.CSSProperties} aria-label="播放《定风波》完整影片"><div className="film-poster__image" /><div className="film-poster__shade" /><span className="film-poster__play">▶</span><p>WATCH FINAL FILM</p><strong>播放《定风波》完整影片 ↗</strong></a>
     </section>
 
     <section className="case-outro"><p>END OF CASE STUDY / 01</p><Link href="/work">BACK TO INDEX</Link></section>
