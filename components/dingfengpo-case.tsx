@@ -16,6 +16,7 @@ const characters = [
   ["character-guo", "郭长戍", "老年面容、木片甲与残破披风。外观先服务“落魄表演者”的身份，再通过木牌与披风的含义变化揭示其真实军人经历。"],
   ["character-zhang", "张议潮", "克制的青年形象，以出场镜头逐步建立力量感。"],
   ["character-commander", "镇将", "紫红暗金服装与体量强化夜宴中的权力位置。"],
+  ["character-soldier", "吐蕃士兵", "遮面、旧布与低反光甲片构成普通士兵系统，并通过统一轮廓维持群体镜头中的角色一致性。"],
 ];
 
 const scenes = [
@@ -68,20 +69,20 @@ export function DingfengpoCase({ project, next }: { project: Project; next: Proj
 
     <section className="dfp-section">
       <header><p>01 / WORLD & VISUAL LANGUAGE</p><h2>世界观与视觉基调</h2><span>低饱和暖灰、土黄、赭石与灰蓝；冷蓝夜色与暖橙火光形成叙事对照。</span></header>
-      <div className="dfp-archive">{archive.map((item, index) => <figure key={item}><img src={media(item)} alt={`定风波视觉档案 ${index + 1}`} /></figure>)}</div>
+      <div className="dfp-archive">{archive.map((item, index) => <a key={item} href={media(item)} target="_blank" rel="noreferrer" aria-label={`查看定风波视觉档案 ${index + 1} 高清原图`}><figure><img src={media(item)} alt={`定风波视觉档案 ${index + 1}`} loading="lazy" decoding="async" /></figure></a>)}</div>
     </section>
 
     <section className="dfp-section">
       <header><p>02 / CHARACTER SYSTEM</p><h2>人物与场景视觉开发</h2><span>人物三视图负责身份一致性，场景母版负责空间关系与光线方向。</span></header>
-      <div className="dfp-characters">{characters.map(([image, title, body]) => <article key={title}><img src={media(image)} alt={title} /><p>{title}</p><span>{body}</span></article>)}</div>
-      <div className="dfp-scenes">{scenes.map(([image, title, body]) => <figure key={title}><img src={media(image)} alt={title} /><figcaption><b>{title}</b><span>{body}</span></figcaption></figure>)}</div>
+      <div className="dfp-characters">{characters.map(([image, title, body]) => <article key={title}><a href={media(image)} target="_blank" rel="noreferrer" aria-label={`查看${title}高清三视图`}><img src={media(image)} alt={`${title}三视图`} loading="lazy" decoding="async" /></a><p>{title}</p><span>{body}</span></article>)}</div>
+      <div className="dfp-scenes">{scenes.map(([image, title, body]) => <figure key={title}><img src={media(image)} alt={title} loading="lazy" decoding="async" /><figcaption><b>{title}</b><span>{body}</span></figcaption></figure>)}</div>
       <p className="dfp-style"><b>统一风格</b> 偏写实的3D动画 / 雕塑化面部与成束发须 / 克制的材质反光 / 低饱和色彩</p>
     </section>
 
     <section className="dfp-section">
       <header><p>03 / NARRATIVE DESIGN</p><h2>叙事结构与镜头设计</h2><span>用“表演”的表层情节埋下计划，让同一物件在反转后获得新的含义。</span></header>
       <div className="dfp-chapters">{chapters.map(([number, title, body]) => <article key={number}><b>{number}</b><h3>{title}</h3><p>{body}</p></article>)}</div>
-      <div className="dfp-board"><img src={media("workboard")} alt="定风波完整制作工作台" /><div><p>制作工作台</p><h3>物件特写负责识别，人物镜头承接情绪，连续帧为成片选帧，而不是逐帧分镜。</h3><a href={project.video} target="_blank" rel="noreferrer">查看最终影片 ↗</a></div></div>
+      <div className="dfp-board"><a href={media("workboard")} target="_blank" rel="noreferrer" aria-label="查看定风波高清制作工作台"><img src={media("workboard")} alt="定风波完整制作工作台" loading="lazy" decoding="async" /></a><div><p>制作工作台</p><h3>物件特写负责识别，人物镜头承接情绪，连续帧为成片选帧，而不是逐帧分镜。</h3><a href={project.video} target="_blank" rel="noreferrer">查看最终影片 ↗</a></div></div>
       <div className="dfp-sound">
         <h3>声音与画面的配合设计</h3>
         <dl><dt>段落</dt><dd>拔剑与报号 / 夜宴行动 / 受击与记忆 / 片尾军阵</dd></dl>
@@ -102,7 +103,7 @@ export function DingfengpoCase({ project, next }: { project: Project; next: Proj
 
     <section className="dfp-final">
       <div className="dfp-final__title"><p>05 / FINAL OUTPUT</p><h2>最终影片与成果展示</h2><span>完整短片、横竖版海报、角色设定与场景资产、中英文字幕</span></div>
-      <div className="dfp-final__grid">{finalFrames.map(([image, title]) => <figure key={image}><img src={media(image)} alt={title} /><figcaption>{title}</figcaption></figure>)}</div>
+      <div className="dfp-final__grid">{finalFrames.map(([image, title]) => <a key={image} href={media(image)} target="_blank" rel="noreferrer" aria-label={`查看${title}高清剧照`}><figure><img src={media(image)} alt={title} loading="lazy" decoding="async" /><figcaption>{title}</figcaption></figure></a>)}</div>
       <a className="dfp-watch" href={project.video} target="_blank" rel="noreferrer"><span>WATCH FINAL FILM</span><i>↗</i></a>
     </section>
 
