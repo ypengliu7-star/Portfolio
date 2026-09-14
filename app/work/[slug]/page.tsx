@@ -4,6 +4,7 @@ import { SiteNav } from "@/components/site-nav";
 import { getProject, projects } from "@/lib/projects";
 import { DingfengpoCase } from "@/components/dingfengpo-case";
 import { AllRoadsCase } from "@/components/all-roads-case";
+import { TrialTailsCase } from "@/components/trial-tails-case";
 
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
@@ -22,6 +23,10 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
   if (project.slug === "all-roads") {
     return <AllRoadsCase project={project} next={next} />;
+  }
+
+  if (project.slug === "trial-tails") {
+    return <TrialTailsCase project={project} next={next} />;
   }
 
   return <main className={`case-study case-study--${project.slug}`}>
